@@ -1,0 +1,13 @@
+# cbBTC Dip Buyer — make.fun BTC Race 24h
+
+A deterministic, standard-library-only TypeScript bot (Node 22) for the
+agent-fun/bars-replay/v1 protocol. It trades Coinbase Wrapped BTC (cbBTC)
+against USDC on 1-minute bars, long only, one position at a time.
+
+Strategy: buy a close that falls more than 0.6% below its 240-bar EMA with
+80% of cash; sell on a recovery to 0.2% above the EMA, on a 1.2% stop under
+the average fill price, or after 360 bars. Ten-bar cooldown after each exit.
+
+Layout: `main.ts` is the entrypoint the grader runs
+(`node /bot/main.ts`); `vendor/makefun-bars.ts` is the kit's protocol
+shim, copied byte for byte.
